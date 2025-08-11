@@ -1,0 +1,72 @@
+---
+alwaysApply: true
+---
+# =====================================
+# Cursol Rules - Frontend Project
+# =====================================
+
+# -------------------------
+# コーディング規約
+# -------------------------
+coding_guidelines:
+  language: "JavaScript/TypeScript + HTML + CSS"
+  framework: "Next.js or React"
+  formatting:
+    indent: 2 # 半角スペース2
+    quotes: "single" # シングルクォート
+    semicolons: true
+    trailing_comma: "es5"
+  lint:
+    eslint: true
+    prettier: true
+
+# -------------------------
+# ディレクトリ構成ルール
+# -------------------------
+structure:
+  - path: "components" # UIコンポーネント
+    rule: "Atomic Design推奨（atoms, molecules, organisms）"
+  - path: "pages"
+    rule: "ページコンポーネントのみ配置。ロジックはhooksやservicesへ分離"
+  - path: "styles"
+    rule: "グローバルCSSとテーマ関連のみ配置"
+  - path: "hooks"
+    rule: "React Hooksを格納"
+  - path: "services"
+    rule: "API呼び出しやビジネスロジック"
+  - path: "utils"
+    rule: "共通関数や定数"
+
+# -------------------------
+# 命名規則
+# -------------------------
+naming_conventions:
+  files:
+    component: "PascalCase" # MyComponent.jsx
+    hook: "camelCase" # useFetchData.js
+    style: "kebab-case" # main-layout.module.css
+  variables:
+    default: "camelCase"
+    constants: "UPPER_SNAKE_CASE"
+
+# -------------------------
+# 使用禁止／推奨パターン
+# -------------------------
+patterns:
+  banned:
+    - "直接DOM操作（document.getElementByIdなど）"
+    - "インラインスタイルの乱用"
+    - "console.logの残置"
+  recommended:
+    - "TypeScriptで型定義を行う"
+    - "環境変数は.envで管理"
+    - "API通信はservices配下に集約"
+    - "状態管理はReact HooksまたはZustandを利用"
+
+# -------------------------
+# その他
+# -------------------------
+notes:
+  - "PR前に必ず lint と format を実行すること"
+  - "画像はpublicディレクトリに置く"
+  - "外部UIライブラリ利用時はデザイン統一を崩さない"
